@@ -71,6 +71,9 @@
     <ClCompile Include="Engine\Private\OffsetFinder\OffsetFinder.cpp">
       <Filter>Engine\Private\OffsetFinder</Filter>
     </ClCompile>
+    <ClCompile Include="Generator\Private\Generators\X64DbgGenerator.cpp">
+      <Filter>Generator\Private\Generators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -233,6 +236,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Public\Unreal\UnrealTypes.h">
       <Filter>Engine\Public\Unreal</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator\Public\Generators\X64DbgGenerator.h">
+      <Filter>Generator\Public\Generators</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

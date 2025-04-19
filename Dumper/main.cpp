@@ -8,6 +8,7 @@
 #include "Generators/MappingGenerator.h"
 #include "Generators/IDAMappingGenerator.h"
 #include "Generators/DumpspaceGenerator.h"
+#include "Generators/X64DbgGenerator.h"
 
 #include "Generators/Generator.h"
 
@@ -57,6 +58,7 @@ DWORD MainThread(HMODULE Module)
 	Generator::Generate<MappingGenerator>();
 	Generator::Generate<IDAMappingGenerator>();
 	Generator::Generate<DumpspaceGenerator>();
+	Generator::Generate<X64DbgGenerator>();
 
 
 	auto t_C = std::chrono::high_resolution_clock::now();
