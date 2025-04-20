@@ -20,7 +20,6 @@ void X64DbgGenerator::GenerateVTableName(nlohmann::json& jsonArray, UEObject Def
 	nlohmann::json commentNode;
 	commentNode["text"] = Name;
 	commentNode["address"] = std::format("0x{:x}", Offset);
-	commentNode["manual"] = true;
 	commentNode["module"] = ModuleName;
 
 	jsonArray.insert(jsonArray.end(), commentNode);
@@ -42,7 +41,6 @@ void X64DbgGenerator::GenerateClassFunctions(nlohmann::json& jsonArray, UEClass 
 		nlohmann::json commentNode;
 		commentNode["text"] = MangledName;
 		commentNode["address"] = std::format("0x{:x}", Offset);
-		commentNode["manual"] = true;
 		commentNode["module"] = ModuleName;
 
 		jsonArray.insert(jsonArray.end(), commentNode);
