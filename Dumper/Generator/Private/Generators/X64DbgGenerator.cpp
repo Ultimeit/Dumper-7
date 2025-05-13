@@ -47,6 +47,15 @@ void X64DbgGenerator::GenerateClassFunctions(nlohmann::json& jsonArray, UEClass 
 	}
 }
 
+void X64DbgGenerator::WriteGlobal(nlohmann::json& jsonArray, const char* Name, int32 RVA)
+{
+	nlohmann::json lblNode;
+	lblNode["module"] = ModuleName;
+	lblNode["text"] = Name;
+	lblNode["address"] = std::format("0x{:x}", RVA);
+	jsonArray.insert(jsonArray.end(), lblNode);
+}
+
 void X64DbgGenerator::Generate()
 {
 	std::string IdaMappingFileName = (Settings::Generator::GameVersion + '-' + Settings::Generator::GameName + ".dd64");
@@ -78,8 +87,17 @@ void X64DbgGenerator::Generate()
 		}
 	}
 
+	nlohmann::json labels = nlohmann::json::array({ });
+
+	WriteGlobal(labels, "GObjects", Off::InSDK::ObjArray::GObjects);
+	WriteGlobal(labels, "AppendNameToString", Off::InSDK::Name::AppendNameToString);
+	WriteGlobal(labels, "GNames", Off::InSDK::NameArray::GNames);
+	WriteGlobal(labels, "GWorld", Off::InSDK::World::GWorld);
+	WriteGlobal(labels, "ProcessEvent", Off::InSDK::ProcessEvent::PEOffset);
+
 	nlohmann::json j;
 	j["comments"] = comments;
+	j["labels"] = labels;
 
 	x64dbgDump << j.dump(1);
 }

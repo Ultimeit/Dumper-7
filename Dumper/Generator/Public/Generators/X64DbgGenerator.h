@@ -39,6 +39,7 @@ private:
 private:
     static void GenerateVTableName(nlohmann::json& jsonArray, UEObject DefaultObject);
     static void GenerateClassFunctions(nlohmann::json& jsonArray, UEClass Class);
+    static void WriteGlobal(nlohmann::json& jsonArray, const char* Name, int32 RVA);
 
 public:
     static void Generate();
